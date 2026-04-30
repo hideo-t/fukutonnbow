@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ふくとんぼ | 障がいとともに、笑顔でとびはねる</title>
+<title>ふくとんぼ | 障がいが障害にならない未来へ</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 
 :root {
   --sky:    #e8f4f0;
@@ -22,8 +22,8 @@
   --cream:  #faf3e8;
   --bark:   #8b6343;
   --text:   #2a2420;
-  --mid:    #6a5a50;
-  --muted:  #9a8880;
+  --mid:    #5a4a40;
+  --muted:  #7a6a60;
   --border: #ddd5c8;
   --white:  #ffffff;
   --shadow: rgba(60,40,20,.1);
@@ -39,41 +39,26 @@ body {
   overflow-x: hidden;
 }
 
-/* ══ CUSTOM CURSOR ══ */
-html { cursor: none; }
-.cursor {
-  position: fixed; width: 20px; height: 20px; z-index: 9999;
-  pointer-events: none; transform: translate(-50%,-50%);
-  transition: width .2s, height .2s, opacity .2s;
-}
-.cursor svg { width: 100%; height: 100%; }
-
-/* ══ TONBO SVG ANIMATION ══ */
-@keyframes fly {
-  0%   { transform: translateY(0) rotate(-5deg); }
-  25%  { transform: translateY(-14px) rotate(3deg); }
-  50%  { transform: translateY(-6px) rotate(-2deg); }
-  75%  { transform: translateY(-18px) rotate(4deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
-}
-@keyframes wingL {
-  0%,100% { transform: rotate(-15deg) scaleY(1); }
-  50%      { transform: rotate(-35deg) scaleY(.85); }
-}
-@keyframes wingR {
-  0%,100% { transform: rotate(15deg) scaleY(1); }
-  50%      { transform: rotate(35deg) scaleY(.85); }
-}
-@keyframes drift {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(30px); }
-  100% { transform: translateX(0); }
+/* ══ DRAFT NOTICE ══ */
+.draft-notice {
+  background: linear-gradient(135deg, var(--amber3), var(--amber));
+  color: var(--bark);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
 }
 
 /* ══ HEADER / NAV ══ */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(253,246,238,.92);
+  position: fixed; top: 32px; left: 0; right: 0; z-index: 100;
+  background: rgba(253,246,238,.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 32px;
@@ -83,11 +68,12 @@ nav {
   height: 60px; max-width: 1100px; margin: 0 auto;
 }
 .nav-logo {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 22px; color: var(--green2);
   display: flex; align-items: center; gap: 8px;
   text-decoration: none;
   letter-spacing: .06em;
+  font-weight: 700;
 }
 .nav-logo .t-mini { font-size: 20px; }
 .nav-links {
@@ -95,8 +81,9 @@ nav {
   list-style: none;
 }
 .nav-links a {
-  font-size: 12px; color: var(--mid); text-decoration: none;
-  letter-spacing: .12em; transition: color .2s;
+  font-size: 13px; color: var(--mid); text-decoration: none;
+  letter-spacing: .1em; transition: color .2s;
+  font-weight: 500;
 }
 .nav-links a:hover { color: var(--green2); }
 
@@ -109,7 +96,7 @@ nav {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
-  padding: 80px 24px 60px;
+  padding: 120px 24px 80px;
   position: relative; overflow: hidden;
 }
 
@@ -133,6 +120,19 @@ nav {
 .grass-wrap svg { width: 100%; height: 100%; }
 
 /* 飛んでいるとんぼ */
+@keyframes fly {
+  0%   { transform: translateY(0) rotate(-5deg); }
+  25%  { transform: translateY(-14px) rotate(3deg); }
+  50%  { transform: translateY(-6px) rotate(-2deg); }
+  75%  { transform: translateY(-18px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+@keyframes drift {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(30px); }
+  100% { transform: translateX(0); }
+}
+
 .hero-tonbo {
   position: relative; z-index: 2;
   animation: fly 3.2s ease-in-out infinite, drift 8s ease-in-out infinite;
@@ -149,7 +149,7 @@ nav {
 }
 
 .hero-title {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: clamp(52px, 12vw, 96px);
   color: var(--green2);
   line-height: 1;
@@ -157,6 +157,7 @@ nav {
   position: relative; z-index: 2;
   letter-spacing: .1em;
   text-shadow: 0 2px 20px rgba(45,107,77,.12);
+  font-weight: 700;
 }
 
 .hero-yomi {
@@ -169,10 +170,10 @@ nav {
 
 .hero-tagline {
   font-family: 'Noto Serif JP', serif;
-  font-size: clamp(15px, 3vw, 20px);
+  font-size: clamp(16px, 3vw, 22px);
   color: var(--mid);
   line-height: 1.9;
-  max-width: 520px;
+  max-width: 560px;
   position: relative; z-index: 2;
   margin-bottom: 40px;
 }
@@ -187,10 +188,10 @@ nav {
   position: relative; z-index: 2;
 }
 .btn {
-  padding: 13px 28px; border-radius: 50px;
+  padding: 14px 30px; border-radius: 50px;
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 13px; font-weight: 500; letter-spacing: .1em;
-  text-decoration: none; transition: all .25s; cursor: none;
+  font-size: 14px; font-weight: 500; letter-spacing: .1em;
+  text-decoration: none; transition: all .25s; cursor: pointer;
   display: inline-flex; align-items: center; gap: 8px;
 }
 .btn-primary {
@@ -206,10 +207,6 @@ nav {
 }
 .btn-outline:hover { background: var(--sky); transform: translateY(-2px); }
 
-/* 流れる草 */
-@keyframes sway { 0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)} }
-@keyframes swayB { 0%,100%{transform:rotate(2deg)}50%{transform:rotate(-4deg)} }
-
 /* ══ SECTION 共通 ══ */
 .section {
   padding: 90px 24px;
@@ -218,7 +215,7 @@ nav {
 }
 .section-sm { max-width: 740px; margin: 0 auto; padding: 70px 24px; }
 .sec-label {
-  font-size: 10px; letter-spacing: .28em;
+  font-size: 11px; letter-spacing: .28em;
   color: var(--green3); text-transform: uppercase;
   font-weight: 500; margin-bottom: 10px;
   display: flex; align-items: center; gap: 10px;
@@ -228,12 +225,13 @@ nav {
   background: linear-gradient(90deg, var(--green3), transparent);
 }
 .sec-title {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: clamp(28px, 6vw, 42px);
   color: var(--green2);
   line-height: 1.3;
   margin-bottom: 16px;
   letter-spacing: .06em;
+  font-weight: 700;
 }
 .sec-sub {
   font-family: 'Noto Serif JP', serif;
@@ -243,60 +241,48 @@ nav {
   margin-bottom: 50px;
 }
 
-/* ══ ABOUT（名前の由来）══ */
-.about-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
+/* ══ NEWS ══ */
+.news-bg {
+  background: var(--white);
+  padding: 80px 24px;
+  border-bottom: 1px solid var(--border);
 }
-
-.tonbo-illustration {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
-}
-
-.about-illus-wrap {
-  background: radial-gradient(ellipse at 50% 60%, var(--sky2) 0%, var(--cream) 70%);
-  border-radius: 50%;
-  width: 320px; height: 320px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  box-shadow: 0 8px 40px rgba(74,140,106,.12);
-}
-.about-illus-wrap .big-tonbo {
-  animation: fly 4s ease-in-out infinite;
-}
-
-.origin-card {
-  background: white;
-  border-radius: 20px;
-  padding: 36px;
-  box-shadow: 0 4px 24px var(--shadow);
+.news-inner { max-width: 900px; margin: 0 auto; }
+.news-list { display: grid; gap: 16px; }
+.news-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 24px;
+  background: var(--warm);
+  border-radius: 12px;
   border: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
 }
-.origin-card::before {
-  content: '🌿';
-  position: absolute; top: -16px; right: 16px; font-size: 64px; opacity: .08;
+.news-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px var(--shadow); }
+.news-date {
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 90px;
+  padding-top: 2px;
 }
-.origin-quote {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(14px, 2.2vw, 16px);
-  color: var(--mid);
-  line-height: 2;
-  margin-bottom: 24px;
+.news-tag {
+  display: inline-block;
+  background: var(--sky2);
+  color: var(--green2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 12px;
 }
-.origin-quote em {
-  font-style: normal; color: var(--green2); font-weight: 600;
-  background: linear-gradient(135deg, rgba(74,140,106,.1), rgba(107,171,134,.1));
-  border-radius: 4px; padding: 0 4px;
+.news-title {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.6;
 }
-.origin-sig {
-  font-family: 'Zen Kurenaido', sans-serif;
-  font-size: 20px; color: var(--green3);
-  text-align: right; letter-spacing: .1em;
+.news-more {
+  text-align: center;
+  margin-top: 32px;
 }
 
 /* ══ PROFILE ══ */
@@ -342,9 +328,10 @@ nav {
   background: linear-gradient(135deg, rgba(255,255,255,.2) 0%, transparent 60%);
 }
 .profile-name {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 26px; color: var(--green2);
   letter-spacing: .08em; margin-bottom: 4px;
+  font-weight: 700;
 }
 .profile-en { font-size: 11px; color: var(--muted); letter-spacing: .2em; }
 
@@ -397,28 +384,98 @@ nav {
 .act-ico { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
 .act-body {}
 .act-title { font-size: 13px; font-weight: 600; color: var(--green2); margin-bottom: 3px; }
-.act-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.act-desc { font-size: 12px; color: var(--mid); line-height: 1.6; }
 
-/* ══ HEARTSHIP ══ */
-.heartship-bg {
-  background: linear-gradient(135deg, #fff8f0, #f0faf4);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+/* ══ PROJECTS（企画・アイディア）══ */
+.projects-bg {
+  background: var(--warm);
   padding: 90px 24px;
+  border-top: 1px solid var(--border);
 }
-.heartship-inner { max-width: 1000px; margin: 0 auto; }
+.projects-inner { max-width: 1000px; margin: 0 auto; }
 
-.hs-hero-card {
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: transform .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px var(--shadow);
+}
+.project-card.featured {
+  border-color: var(--green3);
+  background: linear-gradient(135deg, #f8fff8, white);
+}
+.project-card.featured::before {
+  content: '✨ MAIN PROJECT';
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--green2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 9px;
+  letter-spacing: .1em;
+  font-weight: 500;
+}
+.project-ico {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.project-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 20px;
+  color: var(--green2);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.project-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sky2);
+  color: var(--green2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.project-status.coming {
+  background: rgba(232,168,74,.15);
+  color: var(--amber2);
+}
+
+/* ══ HEARTSHIP（ハートシップ詳細）══ */
+.heartship-detail {
   background: linear-gradient(135deg, var(--green2), var(--green));
   border-radius: 24px;
   padding: 48px;
   color: white;
   text-align: center;
-  margin-bottom: 48px;
+  margin-top: 40px;
   position: relative; overflow: hidden;
   box-shadow: 0 8px 40px rgba(45,107,77,.25);
 }
-.hs-hero-card::before {
+.heartship-detail::before {
   content: '❤️';
   position: absolute; right: -20px; bottom: -20px;
   font-size: 120px; opacity: .08;
@@ -432,9 +489,10 @@ nav {
   margin-bottom: 16px;
 }
 .hs-title {
-  font-family: 'Zen Kurenaido', sans-serif;
-  font-size: clamp(28px, 6vw, 44px);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(24px, 5vw, 36px);
   letter-spacing: .08em; margin-bottom: 14px; line-height: 1.2;
+  font-weight: 700;
 }
 .hs-desc {
   font-family: 'Noto Serif JP', serif;
@@ -445,11 +503,33 @@ nav {
   display: inline-flex; align-items: baseline; gap: 6px;
 }
 .hs-num {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 56px; color: var(--amber3); line-height: 1;
+  font-weight: 700;
 }
 .hs-unit { font-size: 16px; opacity: .8; }
 .hs-sub { font-size: 12px; opacity: .7; display: block; margin-top: 4px; }
+
+/* ══ SUPPORTERS（応援団）══ */
+.supporters-bg {
+  background: linear-gradient(180deg, var(--sky), var(--cream));
+  padding: 90px 24px;
+  border-top: 1px solid var(--border);
+}
+.supporters-inner { max-width: 900px; margin: 0 auto; }
+
+.supporters-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.supporters-intro p {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 .support-tiers {
   display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
@@ -473,8 +553,9 @@ nav {
 .tier.featured .tier-badge { background: var(--amber3); color: var(--amber2); }
 .tier:not(.featured) .tier-badge { background: var(--sky2); color: var(--green2); }
 .tier-name {
-  font-family: 'Zen Kurenaido', sans-serif;
-  font-size: 22px; color: var(--green2); margin-bottom: 6px; letter-spacing: .06em;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 20px; color: var(--green2); margin-bottom: 6px; letter-spacing: .06em;
+  font-weight: 700;
 }
 .tier.featured .tier-name { color: var(--amber2); }
 .tier-price {
@@ -507,59 +588,16 @@ nav {
   height: 60px; border-radius: 8px;
   border: 1.5px dashed var(--border);
   display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: var(--border);
-  letter-spacing: .06em; transition: all .2s; cursor: none;
+  font-size: 10px; color: var(--muted);
+  letter-spacing: .06em; transition: all .2s; cursor: pointer;
 }
 .banner-slot:hover { border-color: var(--green3); color: var(--green3); }
 .banner-slot.filled {
-  border-style: solid; border-color: var(--border);
-  background: var(--sky);
-}
-
-/* ══ ACTIVITIES ══ */
-.activities-bg {
-  padding: 90px 24px;
-  background: var(--warm);
-}
-.activities-inner { max-width: 1000px; margin: 0 auto; }
-.timeline {
-  position: relative;
-  padding-left: 32px;
-}
-.timeline::before {
-  content: '';
-  position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(180deg, var(--green3), var(--amber), var(--green2));
-  border-radius: 2px;
-}
-.tl-item {
-  position: relative; margin-bottom: 36px;
-  background: white; border-radius: 16px; padding: 24px;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 10px var(--shadow);
-  transition: transform .2s, box-shadow .2s;
-}
-.tl-item:hover { transform: translateX(4px); box-shadow: 0 6px 20px var(--shadow); }
-.tl-item::before {
-  content: '';
-  position: absolute; left: -38px; top: 24px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--green2); border: 3px solid var(--warm);
-  box-shadow: 0 0 0 2px var(--green3);
-}
-.tl-ico { font-size: 24px; margin-bottom: 10px; }
-.tl-title {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 16px; font-weight: 600; color: var(--green2);
-  margin-bottom: 6px;
-}
-.tl-body { font-size: 13px; color: var(--mid); line-height: 1.8; }
-.tl-tag {
-  display: inline-block;
-  background: var(--sky);
+  border-style: solid; border-color: var(--green3);
+  background: linear-gradient(135deg,#f0faf4,#e0f2e8);
   color: var(--green2);
-  font-size: 10px; padding: 2px 10px; border-radius: 20px;
-  margin-top: 8px; letter-spacing: .08em;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 /* ══ WORDS ══ */
@@ -576,11 +614,12 @@ nav {
 }
 .words-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
 .big-quote {
-  font-family: 'Zen Kurenaido', sans-serif;
-  font-size: clamp(22px, 5vw, 36px);
-  color: white; line-height: 1.8; margin-bottom: 28px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(20px, 5vw, 32px);
+  color: white; line-height: 1.9; margin-bottom: 28px;
   letter-spacing: .08em;
   text-shadow: 0 2px 12px rgba(0,0,0,.2);
+  font-weight: 700;
 }
 .big-quote em { font-style: normal; color: var(--amber3); }
 .words-name {
@@ -590,7 +629,7 @@ nav {
 
 /* ══ CONTACT ══ */
 .contact-bg {
-  padding: 80px 24px 60px;
+  padding: 90px 24px 80px;
   background: var(--cream);
 }
 .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
@@ -600,38 +639,57 @@ nav {
   border: 1px solid var(--border);
 }
 .contact-card .sec-title { margin-bottom: 10px; }
-.contact-form { margin-top: 32px; display: grid; gap: 14px; }
-.form-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+.contact-info {
+  margin: 24px 0 32px;
 }
-.form-field {
-  text-align: left;
+.contact-info p {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 8px;
 }
-.form-field label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: .06em; }
-.form-field input, .form-field textarea, .form-field select {
-  width: 100%; padding: 11px 14px; border: 1px solid var(--border);
-  border-radius: 10px; font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px; color: var(--text);
-  background: var(--warm); outline: none;
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
 }
-.form-field input:focus, .form-field textarea:focus {
-  border-color: var(--green3);
-  box-shadow: 0 0 0 3px rgba(74,140,106,.1);
+.contact-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .2s;
 }
-.form-field textarea { height: 120px; resize: none; }
-.form-full { grid-column: 1/-1; }
-.submit-btn {
-  width: 100%; padding: 14px;
-  background: linear-gradient(135deg, var(--green), var(--green2));
-  color: white; border: none; border-radius: 50px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px; font-weight: 500; letter-spacing: .1em;
-  cursor: none; transition: all .25s;
-  box-shadow: 0 4px 16px rgba(74,140,106,.3);
+.contact-method.instagram {
+  background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+  color: white;
 }
-.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,140,106,.4); }
+.contact-method.instagram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225,48,108,.4);
+}
+.contact-method.facebook {
+  background: #1877F2;
+  color: white;
+}
+.contact-method.facebook:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(24,119,242,.4);
+}
+.contact-method.email {
+  background: var(--green2);
+  color: white;
+}
+.contact-method.email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45,107,77,.4);
+}
 
 /* ══ FOOTER ══ */
 footer {
@@ -641,12 +699,13 @@ footer {
   padding: 40px 24px;
 }
 .footer-logo {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 28px; color: white;
   letter-spacing: .1em; margin-bottom: 8px;
+  font-weight: 700;
 }
 .footer-copy { font-size: 11px; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-top: 12px; }
-.footer-sns { display: flex; gap: 12px; justify-content: center; margin: 16px 0; }
+.footer-sns { display: flex; gap: 12px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
 .footer-sns a {
   color: rgba(255,255,255,.7); font-size: 13px;
   text-decoration: none; letter-spacing: .1em; transition: color .2s;
@@ -666,20 +725,24 @@ footer {
 
 /* ══ MOBILE ══ */
 @media (max-width: 768px) {
+  nav { top: 32px; }
   .nav-links { display: none; }
-  .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 60px 0 0; background: rgba(253,246,238,.97); padding: 32px; gap: 20px; z-index: 99; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 92px 0 0;
+    background: rgba(253,246,238,.98);
+    padding: 32px; gap: 20px; z-index: 99;
+  }
   .burger { display: block; margin-left: auto; }
-  .about-wrap { grid-template-columns: 1fr; gap: 32px; }
-  .about-illus-wrap { width: 220px; height: 220px; }
   .profile-grid { grid-template-columns: 1fr; gap: 28px; }
   .support-tiers { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  html { cursor: auto; }
-  .cursor { display: none; }
+  .project-grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 140px; }
 }
 @media (max-width: 500px) {
   .hero-title { font-size: 48px; }
   .contact-card { padding: 32px 24px; }
+  .heartship-detail { padding: 32px 24px; }
 }
 
 /* ══ ANIME entrance ══ */
@@ -698,15 +761,9 @@ footer {
 </head>
 <body>
 
-<!-- カスタムカーソル（とんぼ） -->
-<div class="cursor" id="cursor">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="12" cy="14" rx="2" ry="5" fill="#4a8c6a"/>
-    <ellipse cx="6" cy="10" rx="6" ry="2.5" fill="rgba(74,140,106,.5)" transform="rotate(-15 6 10)"/>
-    <ellipse cx="18" cy="10" rx="6" ry="2.5" fill="rgba(74,140,106,.5)" transform="rotate(15 18 10)"/>
-    <circle cx="12" cy="8" r="3" fill="#2d6b4d"/>
-    <circle cx="11" cy="7.5" r=".8" fill="rgba(255,255,255,.6)"/>
-  </svg>
+<!-- 仮サイト表示 -->
+<div class="draft-notice">
+  🌿 このサイトは準備中です（素材待ち）
 </div>
 
 <!-- NAV -->
@@ -716,10 +773,10 @@ footer {
       <span class="t-mini">🌿</span> ふくとんぼ
     </a>
     <ul class="nav-links" id="navlinks">
-      <li><a href="#about">名前の由来</a></li>
+      <li><a href="#news">ニュース</a></li>
       <li><a href="#profile">プロフィール</a></li>
-      <li><a href="#heartship">ハートシップ</a></li>
-      <li><a href="#activities">活動実績</a></li>
+      <li><a href="#projects">企画・アイディア</a></li>
+      <li><a href="#supporters">応援団</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
     </ul>
     <button class="burger" id="burger" onclick="toggleMenu()">
@@ -746,13 +803,9 @@ footer {
       <circle cx="65" cy="27" r=".8" fill="rgba(255,255,255,.7)"/>
       <circle cx="74" cy="27" r=".8" fill="rgba(255,255,255,.7)"/>
       <!-- 上翅 左 -->
-      <g style="transform-origin:70px 38px" class="wingL">
-        <ellipse cx="36" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(-10 36 30)"/>
-      </g>
+      <ellipse cx="36" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(-10 36 30)"/>
       <!-- 上翅 右 -->
-      <g style="transform-origin:70px 38px" class="wingR">
-        <ellipse cx="104" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(10 104 30)"/>
-      </g>
+      <ellipse cx="104" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(10 104 30)"/>
       <!-- 下翅 左 -->
       <ellipse cx="40" cy="46" rx="26" ry="7" fill="rgba(107,171,134,.3)" transform="rotate(-5 40 46)"/>
       <!-- 下翅 右 -->
@@ -776,7 +829,7 @@ footer {
   </p>
 
   <div class="hero-cta">
-    <a href="#about" class="btn btn-primary">🌿 名前の由来を読む</a>
+    <a href="#profile" class="btn btn-primary">🌿 プロフィール</a>
     <a href="#contact" class="btn btn-outline">📩 お問い合わせ</a>
   </div>
 
@@ -800,52 +853,38 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT：名前の由来 -->
-<section class="section reveal" id="about">
-  <p class="sec-label">NAME ORIGIN</p>
-  <h2 class="sec-title">ふくとんぼ の由来</h2>
-  <div class="about-wrap">
-    <div class="tonbo-illustration reveal">
-      <div class="about-illus-wrap">
-        <div class="big-tonbo">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
-            <ellipse cx="100" cy="78" rx="8" ry="32" fill="#2d6b4d"/>
-            <ellipse cx="100" cy="56" rx="10" ry="7" fill="#4a8c6a"/>
-            <circle cx="100" cy="43" r="13" fill="#2d6b4d"/>
-            <ellipse cx="93" cy="40" rx="6" ry="7" fill="#e8a84a"/>
-            <ellipse cx="107" cy="40" rx="6" ry="7" fill="#e8a84a"/>
-            <ellipse cx="92" cy="39" rx="3.5" ry="4.5" fill="#2d6b4d"/>
-            <ellipse cx="108" cy="39" rx="3.5" ry="4.5" fill="#2d6b4d"/>
-            <circle cx="91" cy="38" r="1.2" fill="rgba(255,255,255,.7)"/>
-            <circle cx="107" cy="38" r="1.2" fill="rgba(255,255,255,.7)"/>
-            <ellipse cx="45" cy="46" rx="48" ry="13" fill="rgba(107,171,134,.4)" transform="rotate(-12 45 46)"/>
-            <ellipse cx="155" cy="46" rx="48" ry="13" fill="rgba(107,171,134,.4)" transform="rotate(12 155 46)"/>
-            <ellipse cx="50" cy="68" rx="38" ry="10" fill="rgba(107,171,134,.28)" transform="rotate(-6 50 68)"/>
-            <ellipse cx="150" cy="68" rx="38" ry="10" fill="rgba(107,171,134,.28)" transform="rotate(6 150 68)"/>
-            <rect x="96" y="78" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-            <rect x="96" y="84" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-            <rect x="96" y="90" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.2)"/>
-          </svg>
+<!-- NEWS -->
+<div class="news-bg" id="news">
+  <div class="news-inner">
+    <p class="sec-label reveal">NEWS</p>
+    <h2 class="sec-title reveal">ニュース</h2>
+    <p class="sec-sub reveal">最新の活動情報をお届けします。</p>
+
+    <div class="news-list reveal">
+      <div class="news-item">
+        <span class="news-date">2026.05.01</span>
+        <div>
+          <span class="news-tag">お知らせ</span>
+          <span class="news-title">ウェブサイトを準備中です</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">Coming Soon</span>
+        <div>
+          <span class="news-tag">イベント</span>
+          <span class="news-title">活動情報を更新予定</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <span class="news-date">Coming Soon</span>
+        <div>
+          <span class="news-tag">メディア</span>
+          <span class="news-title">メディア掲載情報を更新予定</span>
         </div>
       </div>
     </div>
-
-    <div class="origin-card reveal">
-      <p class="origin-quote">
-        <em>「福島のとんぼになりたい」</em><br>
-        そんな想いからこの名前が生まれました。<br><br>
-        どんなに辛くても、<br>
-        <em>逆風でも前にしか進まないとんぼ</em>になって<br>
-        自由に夢を描いて飛んでいきたい。<br><br>
-        障がいとともに生きる<em>仲間を笑顔に</em>、<br>
-        支える人も笑顔に、<br>
-        そして<em>自分が一番の笑顔で</em><br>
-        これからも活動していきます。
-      </p>
-      <p class="origin-sig">── ふくとんぼ</p>
-    </div>
   </div>
-</section>
+</div>
 
 <!-- PROFILE -->
 <div class="profile-bg" id="profile">
@@ -878,50 +917,56 @@ footer {
           地域に根ざしたピアサポート事業、<br>
           各種講演・イベント企画など多岐にわたって活動しています。
         </p>
-
-        <div class="activity-list">
-          <div class="act-item">
-            <span class="act-ico">🏠</span>
-            <div class="act-body">
-              <p class="act-title">就労継続支援B型事業所 minna（みんな）</p>
-              <p class="act-desc">郡山市安積町日出山3丁目294。「みんな」でつくる「みんな」の居場所。自分らしく生きるをみつけよう。オリジナルワッフル「わもなるみー」などの製造販売も。</p>
-            </div>
-          </div>
-          <div class="act-item">
-            <span class="act-ico">🤝</span>
-            <div class="act-body">
-              <p class="act-title">ピアサポふくしま（@peer_fuku）</p>
-              <p class="act-desc">障がい福祉と地域の架け橋として、障害当事者によるピアサポート支援事業を展開。</p>
-            </div>
-          </div>
-          <div class="act-item">
-            <span class="act-ico">🎤</span>
-            <div class="act-body">
-              <p class="act-title">講演・イベント活動</p>
-              <p class="act-desc">「ふくにじミュージックツアー in 須賀川」「元気玉フォーラム」など、想いをつなぐイベントを企画・運営。</p>
-            </div>
-          </div>
-          <div class="act-item">
-            <span class="act-ico">🛍</span>
-            <div class="act-body">
-              <p class="act-title">お菓子と雑貨のお店「tunagara（つながれ）」</p>
-              <p class="act-desc">オリジナルワッフル・雑貨の販売。障がい者が作った温かい商品で地域とつながる。</p>
-            </div>
-          </div>
-        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:20px;padding:16px;background:var(--sky);border-radius:12px;">
+          ※ 詳しいプロフィールは準備中です。<br>
+          写真・経歴等は後日追加予定です。
+        </p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HEARTSHIP -->
-<div class="heartship-bg" id="heartship">
-  <div class="heartship-inner">
-    <p class="sec-label reveal">COMING SOON</p>
-    <h2 class="sec-title reveal">ハートシップふくしま</h2>
-    <p class="sec-sub reveal">福島の福祉を、みんなで支える。賛同企業100社を目指すプロジェクト。</p>
+<!-- PROJECTS（企画・アイディア） -->
+<div class="projects-bg" id="projects">
+  <div class="projects-inner">
+    <p class="sec-label reveal">PROJECTS</p>
+    <h2 class="sec-title reveal">企画・アイディア</h2>
+    <p class="sec-sub reveal">障がいが障害にならない未来のために、様々なプロジェクトを展開しています。</p>
 
-    <div class="hs-hero-card reveal">
+    <div class="project-grid reveal">
+      <div class="project-card featured">
+        <div class="project-ico">❤️</div>
+        <h3 class="project-title">ハートシップ福島</h3>
+        <p class="project-desc">
+          福島の福祉を、みんなで支える。<br>
+          賛同企業100社を目指すCSR・社会貢献型プロジェクト。地域企業・団体が一緒になって福祉を支えます。
+        </p>
+        <span class="project-status">🌱 推進中</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-ico">🤖</div>
+        <h3 class="project-title">とんぼAI</h3>
+        <p class="project-desc">
+          AIを活用した障がい者支援の新しいカタチ。<br>
+          テクノロジーで「できる」を増やすプロジェクト。
+        </p>
+        <span class="project-status coming">📋 企画中</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-ico">💬</div>
+        <h3 class="project-title">LINEスタンプ</h3>
+        <p class="project-desc">
+          ふくとんぼオリジナルLINEスタンプ。<br>
+          売上の一部は福祉活動に還元されます。
+        </p>
+        <span class="project-status coming">📋 準備中</span>
+      </div>
+    </div>
+
+    <!-- ハートシップ詳細 -->
+    <div class="heartship-detail reveal">
       <span class="hs-badge">HEARTSHIP FUKUSHIMA</span>
       <h3 class="hs-title">ハートシップふくしま</h3>
       <p class="hs-desc">
@@ -936,6 +981,22 @@ footer {
           <span class="hs-sub">賛同企業 目標（今年度中）</span>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORTERS（応援団） -->
+<div class="supporters-bg" id="supporters">
+  <div class="supporters-inner">
+    <p class="sec-label reveal">SUPPORTERS</p>
+    <h2 class="sec-title reveal">応援団</h2>
+
+    <div class="supporters-intro reveal">
+      <p>
+        ふくとんぼの活動を応援してくださる皆様のご支援により、<br>
+        障がいが障害にならない未来を一緒に創っていきます。<br>
+        賛同企業・サポーターを募集しています。
+      </p>
     </div>
 
     <div class="support-tiers reveal">
@@ -968,9 +1029,7 @@ footer {
     <div class="banner-area reveal">
       <p class="banner-title">── 賛同企業・サポーター企業 ──</p>
       <div class="banner-grid">
-        <div class="banner-slot filled" style="background:linear-gradient(135deg,#f0faf4,#e0f2e8);border-color:var(--green3);color:var(--green2);font-size:11px;font-weight:500">
-          募集中 🌿
-        </div>
+        <div class="banner-slot filled">募集中 🌿</div>
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">企業バナー</div>
@@ -978,54 +1037,6 @@ footer {
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">+ 掲載申込</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ACTIVITIES（活動実績） -->
-<div class="activities-bg" id="activities">
-  <div class="activities-inner">
-    <p class="sec-label reveal">ACTIVITIES</p>
-    <h2 class="sec-title reveal">これまでの活動</h2>
-    <p class="sec-sub reveal">障がいとともに、笑顔でとびはねてきた軌跡。</p>
-
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <div class="tl-ico">🎵</div>
-        <p class="tl-title">ふくにじミュージックツアー in 須賀川</p>
-        <p class="tl-body">大切な想いをつないでいく音楽イベント。障がいのある方もない方も一緒に笑顔になれる場を作りました。</p>
-        <span class="tl-tag">音楽イベント</span>
-      </div>
-      <div class="tl-item">
-        <div class="tl-ico">🌟</div>
-        <p class="tl-title">第6回 元気玉フォーラム「想いをつなぐ時間」</p>
-        <p class="tl-body">笑顔も涙もたくさんの最高の想い出。当事者・支援者・地域が一堂に会するフォーラムを企画運営。</p>
-        <span class="tl-tag">フォーラム</span>
-      </div>
-      <div class="tl-item">
-        <div class="tl-ico">🏠</div>
-        <p class="tl-title">就労継続支援B型事業所 minna 開所</p>
-        <p class="tl-body">郡山市に「みんな」でつくる居場所を開所。食事・送迎・内職作業・ショップ運営・イベント活動など多彩なプログラム。</p>
-        <span class="tl-tag">事業所運営</span>
-      </div>
-      <div class="tl-item">
-        <div class="tl-ico">🌈</div>
-        <p class="tl-title">ピアサポふくしま 設立・運営</p>
-        <p class="tl-body">障がい福祉と地域の架け橋として、当事者によるピアサポート活動を継続。SNSでの情報発信（フォロワー343名）。</p>
-        <span class="tl-tag">ピアサポート</span>
-      </div>
-      <div class="tl-item">
-        <div class="tl-ico">🧇</div>
-        <p class="tl-title">「tunagara」オリジナル商品展開</p>
-        <p class="tl-body">オリジナルワッフル「わもなるみー」など、障がい者の手で生み出した温かい商品で地域とつながる。</p>
-        <span class="tl-tag">商品開発</span>
-      </div>
-      <div class="tl-item">
-        <div class="tl-ico">🦋</div>
-        <p class="tl-title">ハートシップふくしま プロジェクト開始</p>
-        <p class="tl-body">賛同企業100社を目指すCSR・社会貢献型プロジェクトを立ち上げ。一般社団法人ステップ・ワンと連携して推進。</p>
-        <span class="tl-tag">進行中 🌱</span>
       </div>
     </div>
   </div>
@@ -1050,40 +1061,27 @@ footer {
     <div class="contact-card reveal">
       <p class="sec-label" style="justify-content:center">CONTACT</p>
       <h2 class="sec-title">お問い合わせ</h2>
-      <p style="font-size:13px;color:var(--muted);line-height:1.8">
-        講演依頼・取材・ハートシップふくしま賛同申込・その他ご相談はこちらから。
+      <div class="contact-info">
+        <p>
+          講演依頼・取材・ハートシップふくしま賛同申込<br>
+          その他ご相談はこちらから。
+        </p>
+      </div>
+      <div class="contact-methods">
+        <a href="https://www.instagram.com/takahashitonnbow" target="_blank" class="contact-method instagram">
+          📷 Instagram（個人）
+        </a>
+        <a href="https://www.instagram.com/peer_fuku" target="_blank" class="contact-method instagram">
+          🤝 ピアサポふくしま
+        </a>
+        <a href="#" class="contact-method facebook">
+          📘 Facebook（準備中）
+        </a>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:24px;line-height:1.8">
+        ※ お問い合わせフォームは準備中です。<br>
+        SNSのDMよりご連絡ください。
       </p>
-      <form class="contact-form" onsubmit="return false">
-        <div class="form-row">
-          <div class="form-field">
-            <label>お名前</label>
-            <input type="text" placeholder="山田 太郎">
-          </div>
-          <div class="form-field">
-            <label>会社名・団体名</label>
-            <input type="text" placeholder="株式会社〇〇">
-          </div>
-        </div>
-        <div class="form-field form-full">
-          <label>メールアドレス</label>
-          <input type="email" placeholder="example@mail.com">
-        </div>
-        <div class="form-field form-full">
-          <label>お問い合わせ種別</label>
-          <select>
-            <option>講演・登壇依頼</option>
-            <option>ハートシップふくしま 賛同申込</option>
-            <option>取材・メディア</option>
-            <option>事業所見学・視察</option>
-            <option>その他</option>
-          </select>
-        </div>
-        <div class="form-field form-full">
-          <label>メッセージ</label>
-          <textarea placeholder="お気軽にご相談ください。"></textarea>
-        </div>
-        <button class="submit-btn" type="submit">🌿 送信する</button>
-      </form>
     </div>
   </div>
 </div>
@@ -1095,25 +1093,13 @@ footer {
     障がいが障害にならない未来へ
   </p>
   <div class="footer-sns">
-    <a href="https://www.instagram.com/takahashitonnbow" target="_blank">📷 Instagram（個人）</a>
+    <a href="https://www.instagram.com/takahashitonnbow" target="_blank">📷 Instagram</a>
     <a href="https://www.instagram.com/peer_fuku" target="_blank">🤝 ピアサポふくしま</a>
   </div>
-  <p style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px">
-    就労継続支援B型事業所 minna　|　tunagara　|　ハートシップふくしま
-  </p>
   <p class="footer-copy">© ふくとんぼ All rights reserved.</p>
 </footer>
 
 <script>
-/* カスタムカーソル */
-const cursor = document.getElementById('cursor');
-if (cursor) {
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-  });
-}
-
 /* スクロールリビール */
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
