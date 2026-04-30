@@ -4,50 +4,72 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ふくとんぼ | 障がいが障害にならない未来へ</title>
+<meta name="description" content="福島県精神障害者ピアサポーター ふくとんぼ。ADHD・双極症当事者として、障がいが障害にならない未来を目指して活動しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
-
 :root {
-  --sky:    #e8f4f0;
-  --sky2:   #d0ece4;
-  --green:  #4a8c6a;
-  --green2: #2d6b4d;
-  --green3: #6bab86;
-  --light:  #a8cbb8;
-  --amber:  #e8a84a;
-  --amber2: #c07830;
-  --amber3: #f5c875;
-  --red:    #d95a4a;
-  --warm:   #fdf6ee;
-  --cream:  #faf3e8;
-  --bark:   #8b6343;
-  --text:   #2a2420;
-  --mid:    #5a4a40;
-  --muted:  #7a6a60;
-  --border: #ddd5c8;
-  --white:  #ffffff;
-  --shadow: rgba(60,40,20,.1);
+  /* カラーパレット - 柔らかいグリーン系 */
+  --primary: #3d8b6e;
+  --primary-light: #5aa88a;
+  --primary-pale: #e8f5f0;
+  --primary-mist: #f4faf7;
+  --accent: #e09f4a;
+  --accent-light: #f5c97a;
+  --white: #ffffff;
+  --bg: #fafcfb;
+  --bg-warm: #fdfcfa;
+  --text: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --border: #e5ebe8;
+  --border-light: #f0f4f2;
+  --shadow: rgba(61, 139, 110, 0.08);
+  --shadow-lg: rgba(61, 139, 110, 0.12);
+
+  /* タイポグラフィ */
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-round: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+
+  /* サイズ */
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
 body {
-  font-family: 'Noto Sans JP', sans-serif;
-  background: var(--warm);
+  font-family: var(--font-sans);
+  font-weight: 400;
   color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ══ DRAFT NOTICE ══ */
+/* ══════════════════════════════════════
+   DRAFT NOTICE
+   ══════════════════════════════════════ */
 .draft-notice {
-  background: linear-gradient(135deg, var(--amber3), var(--amber));
-  color: var(--bark);
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: #fff;
   text-align: center;
-  padding: 10px 20px;
-  font-size: 12px;
+  padding: 12px 20px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: .1em;
+  letter-spacing: 0.05em;
   position: fixed;
   top: 0;
   left: 0;
@@ -55,529 +77,688 @@ body {
   z-index: 200;
 }
 
-/* ══ HEADER / NAV ══ */
-nav {
-  position: fixed; top: 32px; left: 0; right: 0; z-index: 100;
-  background: rgba(253,246,238,.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 32px;
+/* ══════════════════════════════════════
+   HEADER / NAV
+   ══════════════════════════════════════ */
+header {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  transition: box-shadow 0.3s ease;
 }
-.nav-inner {
-  display: flex; align-items: center; gap: 20px;
-  height: 60px; max-width: 1100px; margin: 0 auto;
+header.scrolled {
+  box-shadow: 0 4px 30px var(--shadow);
 }
-.nav-logo {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 22px; color: var(--green2);
-  display: flex; align-items: center; gap: 8px;
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
-  letter-spacing: .06em;
-  font-weight: 700;
+  color: var(--primary);
 }
-.nav-logo .t-mini { font-size: 20px; }
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.logo-text {
+  font-family: var(--font-round);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
 .nav-links {
-  display: flex; gap: 24px; margin-left: auto;
+  display: flex;
+  gap: 36px;
   list-style: none;
 }
 .nav-links a {
-  font-size: 13px; color: var(--mid); text-decoration: none;
-  letter-spacing: .1em; transition: color .2s;
+  font-size: 14px;
   font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
 }
-.nav-links a:hover { color: var(--green2); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.nav-links a:hover {
+  color: var(--primary);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
 
-.burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
-.burger span { display: block; width: 22px; height: 2px; background: var(--green2); margin: 5px 0; border-radius: 2px; transition: .3s; }
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--primary);
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
 
-/* ══ HERO ══ */
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
 .hero {
   min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 120px 24px 80px;
-  position: relative; overflow: hidden;
+  padding: 160px 40px 100px;
+  background: linear-gradient(180deg, var(--white) 0%, var(--primary-mist) 50%, var(--primary-pale) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* 草原背景 */
+/* 装飾的な背景要素 */
 .hero::before {
   content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(74,140,106,.12) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(232,168,74,.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 10%, rgba(74,140,106,.06) 0%, transparent 60%),
-    linear-gradient(180deg, #faf3e8 0%, #f0f9f3 60%, #e0f2e8 100%);
-  z-index: 0;
-}
-
-/* 草 */
-.grass-wrap {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 120px; z-index: 1;
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(61, 139, 110, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
-.grass-wrap svg { width: 100%; height: 100%; }
-
-/* 飛んでいるとんぼ */
-@keyframes fly {
-  0%   { transform: translateY(0) rotate(-5deg); }
-  25%  { transform: translateY(-14px) rotate(3deg); }
-  50%  { transform: translateY(-6px) rotate(-2deg); }
-  75%  { transform: translateY(-18px) rotate(4deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
-}
-@keyframes drift {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(30px); }
-  100% { transform: translateX(0); }
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(224, 159, 74, 0.04) 0%, transparent 70%);
+  pointer-events: none;
 }
 
+/* とんぼイラスト */
 .hero-tonbo {
-  position: relative; z-index: 2;
-  animation: fly 3.2s ease-in-out infinite, drift 8s ease-in-out infinite;
-  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-16px) rotate(2deg); }
 }
 
 .hero-subtitle {
-  font-size: clamp(11px, 2vw, 13px);
-  letter-spacing: .22em;
-  color: var(--green3);
-  margin-bottom: 14px;
-  position: relative; z-index: 2;
+  font-size: 13px;
   font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--primary-light);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-title {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: clamp(52px, 12vw, 96px);
-  color: var(--green2);
-  line-height: 1;
-  margin-bottom: 10px;
-  position: relative; z-index: 2;
-  letter-spacing: .1em;
-  text-shadow: 0 2px 20px rgba(45,107,77,.12);
+  font-family: var(--font-round);
+  font-size: clamp(48px, 10vw, 80px);
   font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-yomi {
-  font-size: clamp(13px, 2.5vw, 16px);
-  color: var(--muted);
-  letter-spacing: .28em;
-  margin-bottom: 28px;
-  position: relative; z-index: 2;
-}
-
-.hero-tagline {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(16px, 3vw, 22px);
-  color: var(--mid);
-  line-height: 1.9;
-  max-width: 560px;
-  position: relative; z-index: 2;
+.hero-en {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
   margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
 }
-.hero-tagline em {
-  font-style: normal;
-  color: var(--green2);
+
+.hero-message {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 400;
+  color: var(--text-light);
+  line-height: 2;
+  max-width: 520px;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 2;
+}
+.hero-message strong {
+  color: var(--primary);
   font-weight: 600;
 }
 
 .hero-cta {
-  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-  position: relative; z-index: 2;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
+
+/* ボタン */
 .btn {
-  padding: 14px 30px; border-radius: 50px;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px; font-weight: 500; letter-spacing: .1em;
-  text-decoration: none; transition: all .25s; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--green), var(--green2));
-  color: white;
-  box-shadow: 0 4px 16px rgba(74,140,106,.35);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(61, 139, 110, 0.25);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,140,106,.4); }
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(61, 139, 110, 0.35);
+}
 .btn-outline {
-  background: transparent;
-  border: 1.5px solid var(--green3);
-  color: var(--green2);
+  background: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary-light);
 }
-.btn-outline:hover { background: var(--sky); transform: translateY(-2px); }
+.btn-outline:hover {
+  background: var(--primary-pale);
+  transform: translateY(-3px);
+}
 
-/* ══ SECTION 共通 ══ */
+/* ══════════════════════════════════════
+   SECTION 共通
+   ══════════════════════════════════════ */
 .section {
-  padding: 90px 24px;
+  padding: 100px 40px;
+}
+.section-inner {
   max-width: 1000px;
   margin: 0 auto;
 }
-.section-sm { max-width: 740px; margin: 0 auto; padding: 70px 24px; }
-.sec-label {
-  font-size: 11px; letter-spacing: .28em;
-  color: var(--green3); text-transform: uppercase;
-  font-weight: 500; margin-bottom: 10px;
-  display: flex; align-items: center; gap: 10px;
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
-.sec-label::before {
-  content: ''; width: 28px; height: 1.5px;
-  background: linear-gradient(90deg, var(--green3), transparent);
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--primary-light);
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
-.sec-title {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: clamp(28px, 6vw, 42px);
-  color: var(--green2);
-  line-height: 1.3;
-  margin-bottom: 16px;
-  letter-spacing: .06em;
+.section-title {
+  font-family: var(--font-round);
+  font-size: clamp(28px, 5vw, 36px);
   font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
 }
-.sec-sub {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(14px, 2.5vw, 16px);
-  color: var(--mid);
+.section-desc {
+  font-size: 15px;
+  color: var(--text-light);
   line-height: 1.9;
-  margin-bottom: 50px;
+  max-width: 560px;
+  margin: 0 auto;
 }
 
-/* ══ NEWS ══ */
-.news-bg {
+/* ══════════════════════════════════════
+   NEWS
+   ══════════════════════════════════════ */
+.news-section {
   background: var(--white);
-  padding: 80px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
 }
-.news-inner { max-width: 900px; margin: 0 auto; }
-.news-list { display: grid; gap: 16px; }
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
 .news-item {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 20px 24px;
-  background: var(--warm);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  transition: transform .2s, box-shadow .2s;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--white);
+  transition: background 0.3s ease;
 }
-.news-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px var(--shadow); }
+.news-item:hover {
+  background: var(--primary-mist);
+}
 .news-date {
-  font-size: 12px;
-  color: var(--muted);
-  min-width: 90px;
-  padding-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  min-width: 100px;
 }
 .news-tag {
   display: inline-block;
-  background: var(--sky2);
-  color: var(--green2);
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 500;
-  margin-right: 12px;
+  padding: 4px 12px;
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
 }
 .news-title {
-  font-size: 14px;
-  color: var(--text);
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.6;
-}
-.news-more {
-  text-align: center;
-  margin-top: 32px;
+  color: var(--text);
+  flex: 1;
 }
 
-/* ══ PROFILE ══ */
-.profile-bg {
-  background: linear-gradient(180deg, var(--cream) 0%, var(--sky) 100%);
-  padding: 90px 24px;
-  position: relative;
-  overflow: hidden;
-}
-.profile-bg::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--green2), var(--amber), var(--green3));
-}
-
-.profile-inner {
-  max-width: 900px; margin: 0 auto;
+/* ══════════════════════════════════════
+   PROFILE
+   ══════════════════════════════════════ */
+.profile-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--primary-mist) 100%);
 }
 .profile-grid {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 50px;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
   align-items: start;
 }
-
 .profile-avatar {
   text-align: center;
 }
-.avatar-circle {
-  width: 200px; height: 200px;
-  background: linear-gradient(135deg, var(--green3), var(--green2));
+.avatar-image {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 80px;
-  margin: 0 auto 16px;
-  box-shadow: 0 8px 32px rgba(74,140,106,.3);
-  position: relative;
-  overflow: hidden;
-}
-.avatar-circle::after {
-  content: '';
-  position: absolute; inset: 0; border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255,255,255,.2) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  margin: 0 auto 20px;
+  box-shadow: 0 12px 40px rgba(61, 139, 110, 0.2);
 }
 .profile-name {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 26px; color: var(--green2);
-  letter-spacing: .08em; margin-bottom: 4px;
+  font-family: var(--font-round);
+  font-size: 24px;
   font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
 }
-.profile-en { font-size: 11px; color: var(--muted); letter-spacing: .2em; }
-
-.sns-row {
-  display: flex; gap: 10px; justify-content: center; margin-top: 16px;
+.profile-name-en {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
 }
-.sns-btn {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--green2); color: white;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; font-size: 14px; transition: all .2s;
+.sns-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
-.sns-btn:hover { transform: scale(1.12); background: var(--green); }
+.sns-link {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.sns-link:hover {
+  background: var(--primary-light);
+  transform: scale(1.1);
+}
 
 .profile-content {}
 .profile-intro {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(14px, 2.2vw, 16px);
+  font-size: 15px;
   color: var(--text);
   line-height: 2;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
-.profile-intro strong { color: var(--green2); }
-
+.profile-intro strong {
+  color: var(--primary);
+  font-weight: 600;
+}
 .tag-list {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
 }
 .tag {
-  background: rgba(74,140,106,.1);
-  border: 1px solid rgba(74,140,106,.2);
-  color: var(--green2);
-  padding: 5px 14px; border-radius: 20px;
-  font-size: 12px; letter-spacing: .06em;
-}
-.tag.amber {
-  background: rgba(232,168,74,.1);
-  border-color: rgba(232,168,74,.25);
-  color: var(--amber2);
-}
-
-.activity-list { display: grid; gap: 12px; }
-.act-item {
-  display: flex; align-items: flex-start; gap: 12px;
-  background: white; border-radius: 12px; padding: 14px 18px;
+  padding: 8px 16px;
+  background: var(--white);
   border: 1px solid var(--border);
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: transform .2s, box-shadow .2s;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
 }
-.act-item:hover { transform: translateY(-2px); box-shadow: 0 6px 16px var(--shadow); }
-.act-ico { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-.act-body {}
-.act-title { font-size: 13px; font-weight: 600; color: var(--green2); margin-bottom: 3px; }
-.act-desc { font-size: 12px; color: var(--mid); line-height: 1.6; }
-
-/* ══ PROJECTS（企画・アイディア）══ */
-.projects-bg {
-  background: var(--warm);
-  padding: 90px 24px;
-  border-top: 1px solid var(--border);
+.tag.accent {
+  background: rgba(224, 159, 74, 0.1);
+  border-color: rgba(224, 159, 74, 0.3);
+  color: var(--accent);
 }
-.projects-inner { max-width: 1000px; margin: 0 auto; }
 
+.placeholder-box {
+  background: var(--primary-pale);
+  border-radius: var(--radius);
+  padding: 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════
+   PROJECTS
+   ══════════════════════════════════════ */
+.projects-section {
+  background: var(--white);
+}
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
-  margin-bottom: 40px;
 }
-
 .project-card {
-  background: white;
-  border-radius: 20px;
-  padding: 32px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px var(--shadow);
-  transition: transform .3s, box-shadow .3s;
-  position: relative;
-  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  transition: all 0.3s ease;
 }
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px var(--shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px var(--shadow-lg);
+  border-color: var(--primary-light);
 }
 .project-card.featured {
-  border-color: var(--green3);
-  background: linear-gradient(135deg, #f8fff8, white);
+  background: linear-gradient(135deg, var(--primary-mist), var(--white));
+  border-color: var(--primary-light);
+  position: relative;
 }
 .project-card.featured::before {
-  content: '✨ MAIN PROJECT';
+  content: 'MAIN';
   position: absolute;
-  top: 16px; right: 16px;
-  background: var(--green2);
-  color: white;
+  top: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 9px;
-  letter-spacing: .1em;
-  font-weight: 500;
+  border-radius: var(--radius-full);
 }
-.project-ico {
-  font-size: 48px;
+.project-icon {
+  font-size: 40px;
   margin-bottom: 20px;
 }
 .project-title {
-  font-family: 'Zen Maru Gothic', sans-serif;
+  font-family: var(--font-round);
   font-size: 20px;
-  color: var(--green2);
-  margin-bottom: 8px;
   font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
 }
 .project-desc {
-  font-size: 13px;
-  color: var(--mid);
+  font-size: 14px;
+  color: var(--text-light);
   line-height: 1.8;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 .project-status {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--sky2);
-  color: var(--green2);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 500;
+  padding: 8px 16px;
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
 }
 .project-status.coming {
-  background: rgba(232,168,74,.15);
-  color: var(--amber2);
+  background: rgba(224, 159, 74, 0.12);
+  color: var(--accent);
 }
 
-/* ══ HEARTSHIP（ハートシップ詳細）══ */
-.heartship-detail {
-  background: linear-gradient(135deg, var(--green2), var(--green));
-  border-radius: 24px;
-  padding: 48px;
-  color: white;
+/* ハートシップ詳細カード */
+.heartship-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  color: var(--white);
   text-align: center;
-  margin-top: 40px;
-  position: relative; overflow: hidden;
-  box-shadow: 0 8px 40px rgba(45,107,77,.25);
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
 }
-.heartship-detail::before {
-  content: '❤️';
-  position: absolute; right: -20px; bottom: -20px;
-  font-size: 120px; opacity: .08;
+.heartship-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
 }
-.hs-badge {
+.heartship-badge {
   display: inline-block;
-  background: rgba(255,255,255,.2);
-  border: 1px solid rgba(255,255,255,.3);
-  padding: 4px 14px; border-radius: 20px;
-  font-size: 10px; letter-spacing: .18em;
+  background: rgba(255,255,255,0.2);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+}
+.heartship-title {
+  font-family: var(--font-round);
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
   margin-bottom: 16px;
+  letter-spacing: 0.06em;
 }
-.hs-title {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: clamp(24px, 5vw, 36px);
-  letter-spacing: .08em; margin-bottom: 14px; line-height: 1.2;
+.heartship-desc {
+  font-size: 15px;
+  line-height: 2;
+  opacity: 0.9;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+.heartship-count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.heartship-num {
+  font-family: var(--font-round);
+  font-size: 56px;
   font-weight: 700;
+  color: var(--accent-light);
 }
-.hs-desc {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(13px, 2vw, 15px);
-  opacity: .9; line-height: 1.9; max-width: 500px; margin: 0 auto 28px;
+.heartship-unit {
+  font-size: 18px;
+  opacity: 0.8;
 }
-.hs-count {
-  display: inline-flex; align-items: baseline; gap: 6px;
+.heartship-note {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 8px;
 }
-.hs-num {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 56px; color: var(--amber3); line-height: 1;
-  font-weight: 700;
-}
-.hs-unit { font-size: 16px; opacity: .8; }
-.hs-sub { font-size: 12px; opacity: .7; display: block; margin-top: 4px; }
 
-/* ══ SUPPORTERS（応援団）══ */
-.supporters-bg {
-  background: linear-gradient(180deg, var(--sky), var(--cream));
-  padding: 90px 24px;
-  border-top: 1px solid var(--border);
+/* ══════════════════════════════════════
+   SUPPORTERS
+   ══════════════════════════════════════ */
+.supporters-section {
+  background: linear-gradient(180deg, var(--primary-mist), var(--bg-warm));
 }
-.supporters-inner { max-width: 900px; margin: 0 auto; }
-
 .supporters-intro {
   text-align: center;
   margin-bottom: 48px;
 }
 .supporters-intro p {
-  font-family: 'Noto Serif JP', serif;
   font-size: 15px;
-  color: var(--mid);
+  color: var(--text-light);
   line-height: 2;
-  max-width: 600px;
+  max-width: 560px;
   margin: 0 auto;
 }
-
-.support-tiers {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
   margin-bottom: 48px;
 }
-.tier {
-  background: white; border-radius: 16px; padding: 28px;
+.tier-card {
+  background: var(--white);
   border: 1px solid var(--border);
-  box-shadow: 0 2px 12px var(--shadow);
-  transition: transform .2s, box-shadow .2s;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all 0.3s ease;
 }
-.tier:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
-.tier.featured {
-  border-color: var(--amber);
-  background: linear-gradient(135deg, #fffdf5, #fff8e8);
+.tier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px var(--shadow);
+}
+.tier-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #fffbf5, var(--white));
 }
 .tier-badge {
-  display: inline-block; padding: 3px 10px; border-radius: 20px;
-  font-size: 10px; letter-spacing: .1em; font-weight: 500; margin-bottom: 12px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
 }
-.tier.featured .tier-badge { background: var(--amber3); color: var(--amber2); }
-.tier:not(.featured) .tier-badge { background: var(--sky2); color: var(--green2); }
+.tier-card.featured .tier-badge {
+  background: var(--accent-light);
+  color: #8b5a1a;
+}
+.tier-card:not(.featured) .tier-badge {
+  background: var(--primary-pale);
+  color: var(--primary);
+}
 .tier-name {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 20px; color: var(--green2); margin-bottom: 6px; letter-spacing: .06em;
+  font-family: var(--font-round);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.tier-card.featured .tier-name {
+  color: var(--accent);
+}
+.tier-price {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.tier-features {
+  list-style: none;
+}
+.tier-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 8px 0;
+}
+.tier-features li::before {
+  content: '✓';
+  color: var(--primary);
   font-weight: 700;
 }
-.tier.featured .tier-name { color: var(--amber2); }
-.tier-price {
-  font-size: 13px; color: var(--muted); margin-bottom: 14px;
+.tier-card.featured .tier-features li::before {
+  color: var(--accent);
 }
-.tier-features { list-style: none; display: grid; gap: 7px; }
-.tier-features li {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 12px; color: var(--mid);
-}
-.tier-features li::before { content: '✓'; color: var(--green3); font-weight: 700; flex-shrink: 0; }
-.tier.featured .tier-features li::before { color: var(--amber); }
 
-/* 賛同企業バナーエリア */
+/* バナーエリア */
 .banner-area {
-  background: white; border-radius: 16px; padding: 28px 32px;
+  background: var(--white);
   border: 1px solid var(--border);
-  box-shadow: 0 2px 12px var(--shadow);
+  border-radius: var(--radius-lg);
+  padding: 32px;
 }
 .banner-title {
-  font-size: 12px; letter-spacing: .18em; color: var(--muted);
-  margin-bottom: 20px; text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
 }
 .banner-grid {
   display: grid;
@@ -585,192 +766,264 @@ nav {
   gap: 12px;
 }
 .banner-slot {
-  height: 60px; border-radius: 8px;
-  border: 1.5px dashed var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: var(--muted);
-  letter-spacing: .06em; transition: all .2s; cursor: pointer;
-}
-.banner-slot:hover { border-color: var(--green3); color: var(--green3); }
-.banner-slot.filled {
-  border-style: solid; border-color: var(--green3);
-  background: linear-gradient(135deg,#f0faf4,#e0f2e8);
-  color: var(--green2);
+  height: 56px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 11px;
-  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.banner-slot:hover {
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+.banner-slot.active {
+  border-style: solid;
+  border-color: var(--primary-light);
+  background: var(--primary-pale);
+  color: var(--primary);
+  font-weight: 600;
 }
 
-/* ══ WORDS ══ */
-.words-bg {
-  background: linear-gradient(135deg, var(--green2), var(--green));
-  padding: 80px 24px;
+/* ══════════════════════════════════════
+   QUOTE
+   ══════════════════════════════════════ */
+.quote-section {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  padding: 80px 40px;
   text-align: center;
-  position: relative; overflow: hidden;
 }
-.words-bg::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+.quote-inner {
+  max-width: 700px;
+  margin: 0 auto;
 }
-.words-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
-.big-quote {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: clamp(20px, 5vw, 32px);
-  color: white; line-height: 1.9; margin-bottom: 28px;
-  letter-spacing: .08em;
-  text-shadow: 0 2px 12px rgba(0,0,0,.2);
+.quote-text {
+  font-family: var(--font-round);
+  font-size: clamp(18px, 3.5vw, 26px);
   font-weight: 700;
+  color: var(--white);
+  line-height: 2;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
 }
-.big-quote em { font-style: normal; color: var(--amber3); }
-.words-name {
-  font-size: 14px; color: rgba(255,255,255,.7);
-  letter-spacing: .2em;
+.quote-text em {
+  font-style: normal;
+  color: var(--accent-light);
+}
+.quote-author {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.2em;
 }
 
-/* ══ CONTACT ══ */
-.contact-bg {
-  padding: 90px 24px 80px;
-  background: var(--cream);
+/* ══════════════════════════════════════
+   CONTACT
+   ══════════════════════════════════════ */
+.contact-section {
+  background: var(--bg-warm);
 }
-.contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
 .contact-card {
-  background: white; border-radius: 24px; padding: 48px 40px;
-  box-shadow: 0 8px 40px var(--shadow);
-  border: 1px solid var(--border);
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 56px 48px;
+  box-shadow: 0 12px 48px var(--shadow);
+  text-align: center;
 }
-.contact-card .sec-title { margin-bottom: 10px; }
 .contact-info {
   margin: 24px 0 32px;
 }
 .contact-info p {
-  font-size: 13px;
-  color: var(--mid);
-  line-height: 1.8;
-  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.9;
 }
 .contact-methods {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 24px;
 }
-.contact-method {
+.contact-link {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 16px 24px;
-  border-radius: 12px;
+  padding: 18px 24px;
+  border-radius: var(--radius);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 500;
-  transition: all .2s;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
-.contact-method.instagram {
+.contact-link.instagram {
   background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
-  color: white;
+  color: var(--white);
 }
-.contact-method.instagram:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(225,48,108,.4);
+.contact-link.instagram:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.35);
 }
-.contact-method.facebook {
-  background: #1877F2;
-  color: white;
+.contact-link.email {
+  background: var(--primary);
+  color: var(--white);
 }
-.contact-method.facebook:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(24,119,242,.4);
+.contact-link.email:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(61, 139, 110, 0.35);
 }
-.contact-method.email {
-  background: var(--green2);
-  color: white;
-}
-.contact-method.email:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45,107,77,.4);
+.contact-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
 }
 
-/* ══ FOOTER ══ */
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
 footer {
-  background: var(--green2);
-  color: rgba(255,255,255,.8);
+  background: var(--primary);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 40px 24px;
+  padding: 48px 40px;
 }
 .footer-logo {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 28px; color: white;
-  letter-spacing: .1em; margin-bottom: 8px;
+  font-family: var(--font-round);
+  font-size: 24px;
   font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
 }
-.footer-copy { font-size: 11px; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-top: 12px; }
-.footer-sns { display: flex; gap: 12px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
-.footer-sns a {
-  color: rgba(255,255,255,.7); font-size: 13px;
-  text-decoration: none; letter-spacing: .1em; transition: color .2s;
+.footer-tagline {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
 }
-.footer-sns a:hover { color: white; }
-
-/* ══ SCROLL REVEAL ══ */
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s ease;
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover {
+  color: var(--white);
+}
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+}
 
-/* ══ SCROLLBAR ══ */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-thumb { background: var(--green3); border-radius: 3px; }
+/* ══════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* ══ MOBILE ══ */
-@media (max-width: 768px) {
-  nav { top: 32px; }
-  .nav-links { display: none; }
-  .nav-links.open {
-    display: flex; flex-direction: column;
-    position: fixed; inset: 92px 0 0;
-    background: rgba(253,246,238,.98);
-    padding: 32px; gap: 20px; z-index: 99;
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-  .burger { display: block; margin-left: auto; }
-  .profile-grid { grid-template-columns: 1fr; gap: 28px; }
-  .support-tiers { grid-template-columns: 1fr; }
-  .project-grid { grid-template-columns: 1fr; }
-  .hero { padding-top: 140px; }
-}
-@media (max-width: 500px) {
-  .hero-title { font-size: 48px; }
-  .contact-card { padding: 32px 24px; }
-  .heartship-detail { padding: 32px 24px; }
+  .tier-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* ══ ANIME entrance ══ */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(30px); }
-  to   { opacity:1; transform:translateY(0); }
+@media (max-width: 768px) {
+  header { top: 40px; }
+  .header-inner {
+    padding: 0 24px;
+    height: 64px;
+  }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 104px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    padding: 40px;
+    gap: 28px;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a {
+    font-size: 16px;
+  }
+  .burger {
+    display: block;
+  }
+
+  .hero {
+    padding: 140px 24px 80px;
+  }
+  .section {
+    padding: 80px 24px;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .heartship-card {
+    padding: 40px 24px;
+  }
+  .contact-card {
+    padding: 40px 24px;
+  }
 }
-.hero > * { animation: fadeUp .8s ease both; }
-.hero-subtitle { animation-delay: .1s; }
-.hero-tonbo    { animation-delay: .2s; }
-.hero-title    { animation-delay: .35s; }
-.hero-yomi     { animation-delay: .45s; }
-.hero-tagline  { animation-delay: .55s; }
-.hero-cta      { animation-delay: .7s; }
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 40px;
+  }
+  .news-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
 </style>
 </head>
 <body>
 
 <!-- 仮サイト表示 -->
 <div class="draft-notice">
-  🌿 このサイトは準備中です（素材待ち）
+  このサイトは準備中です（素材待ち）
 </div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#top" class="nav-logo">
-      <span class="t-mini">🌿</span> ふくとんぼ
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <div class="logo-icon">🌿</div>
+      <span class="logo-text">ふくとんぼ</span>
     </a>
     <ul class="nav-links" id="navlinks">
       <li><a href="#news">ニュース</a></li>
@@ -783,34 +1036,25 @@ footer {
       <span></span><span></span><span></span>
     </button>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <!-- 飛ぶとんぼ SVG -->
   <div class="hero-tonbo">
-    <svg width="140" height="80" viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- 胴体 -->
-      <ellipse cx="70" cy="52" rx="6" ry="22" fill="#2d6b4d"/>
-      <ellipse cx="70" cy="38" rx="7" ry="5" fill="#4a8c6a"/>
-      <!-- 頭 -->
-      <circle cx="70" cy="30" r="9" fill="#2d6b4d"/>
-      <!-- 複眼 -->
-      <ellipse cx="66" cy="28" rx="4" ry="4.5" fill="#e8a84a"/>
-      <ellipse cx="74" cy="28" rx="4" ry="4.5" fill="#e8a84a"/>
-      <ellipse cx="65.5" cy="27.5" rx="2.5" ry="3" fill="#2d6b4d"/>
-      <ellipse cx="74.5" cy="27.5" rx="2.5" ry="3" fill="#2d6b4d"/>
+    <svg width="120" height="70" viewBox="0 0 140 80" fill="none">
+      <ellipse cx="70" cy="52" rx="6" ry="22" fill="#3d8b6e"/>
+      <ellipse cx="70" cy="38" rx="7" ry="5" fill="#5aa88a"/>
+      <circle cx="70" cy="30" r="9" fill="#3d8b6e"/>
+      <ellipse cx="66" cy="28" rx="4" ry="4.5" fill="#e09f4a"/>
+      <ellipse cx="74" cy="28" rx="4" ry="4.5" fill="#e09f4a"/>
+      <ellipse cx="65.5" cy="27.5" rx="2.5" ry="3" fill="#3d8b6e"/>
+      <ellipse cx="74.5" cy="27.5" rx="2.5" ry="3" fill="#3d8b6e"/>
       <circle cx="65" cy="27" r=".8" fill="rgba(255,255,255,.7)"/>
       <circle cx="74" cy="27" r=".8" fill="rgba(255,255,255,.7)"/>
-      <!-- 上翅 左 -->
-      <ellipse cx="36" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(-10 36 30)"/>
-      <!-- 上翅 右 -->
-      <ellipse cx="104" cy="30" rx="32" ry="9" fill="rgba(107,171,134,.45)" transform="rotate(10 104 30)"/>
-      <!-- 下翅 左 -->
-      <ellipse cx="40" cy="46" rx="26" ry="7" fill="rgba(107,171,134,.3)" transform="rotate(-5 40 46)"/>
-      <!-- 下翅 右 -->
-      <ellipse cx="100" cy="46" rx="26" ry="7" fill="rgba(107,171,134,.3)" transform="rotate(5 100 46)"/>
-      <!-- 節 -->
+      <ellipse cx="36" cy="30" rx="32" ry="9" fill="rgba(90,168,138,.4)" transform="rotate(-10 36 30)"/>
+      <ellipse cx="104" cy="30" rx="32" ry="9" fill="rgba(90,168,138,.4)" transform="rotate(10 104 30)"/>
+      <ellipse cx="40" cy="46" rx="26" ry="7" fill="rgba(90,168,138,.25)" transform="rotate(-5 40 46)"/>
+      <ellipse cx="100" cy="46" rx="26" ry="7" fill="rgba(90,168,138,.25)" transform="rotate(5 100 46)"/>
       <rect x="67" y="52" width="6" height="2" rx="1" fill="rgba(255,255,255,.2)"/>
       <rect x="67" y="57" width="6" height="2" rx="1" fill="rgba(255,255,255,.2)"/>
       <rect x="67" y="62" width="6" height="2" rx="1" fill="rgba(255,255,255,.2)"/>
@@ -818,189 +1062,162 @@ footer {
   </div>
 
   <p class="hero-subtitle">ADHD × 双極症 当事者　福島県精神障害者ピアサポーター</p>
-
   <h1 class="hero-title">ふくとんぼ</h1>
-  <p class="hero-yomi">FUKU TONBO</p>
+  <p class="hero-en">FUKU TONBO</p>
 
-  <p class="hero-tagline">
-    <em>障がいが障害にならない未来へ。</em><br>
+  <p class="hero-message">
+    <strong>障がいが障害にならない未来へ。</strong><br>
     逆風でも前にしか進まないとんぼのように、<br>
     自由に夢を描いて飛んでいく。
   </p>
 
   <div class="hero-cta">
-    <a href="#profile" class="btn btn-primary">🌿 プロフィール</a>
-    <a href="#contact" class="btn btn-outline">📩 お問い合わせ</a>
-  </div>
-
-  <!-- 草 -->
-  <div class="grass-wrap">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <g fill="#4a8c6a" opacity=".18">
-        <path d="M0 80 Q30 20 60 60 Q90 100 120 50 Q150 0 180 70 Q210 120 240 60 L240 120 L0 120Z"/>
-        <path d="M200 90 Q240 30 280 70 Q320 110 360 55 Q400 0 440 75 Q480 120 520 65 L520 120 L200 120Z"/>
-        <path d="M480 85 Q520 25 560 65 Q600 105 640 50 Q680 0 720 72 Q760 120 800 60 L800 120 L480 120Z"/>
-        <path d="M750 88 Q790 28 830 68 Q870 108 910 52 Q950 0 990 74 Q1030 120 1070 62 L1070 120 L750 120Z"/>
-        <path d="M1000 82 Q1040 22 1080 62 Q1120 102 1160 48 Q1200 0 1200 80 L1200 120 L1000 120Z"/>
-      </g>
-      <g fill="#2d6b4d" opacity=".12">
-        <path d="M0 100 Q40 60 80 85 Q120 110 160 75 Q200 40 240 95 L240 120 L0 120Z"/>
-        <path d="M300 95 Q340 55 380 80 Q420 105 460 70 Q500 35 540 90 L540 120 L300 120Z"/>
-        <path d="M600 98 Q640 58 680 83 Q720 108 760 73 Q800 38 840 93 L840 120 L600 120Z"/>
-        <path d="M900 96 Q940 56 980 81 Q1020 106 1060 71 Q1100 36 1140 91 L1140 120 L900 120Z"/>
-      </g>
-    </svg>
+    <a href="#profile" class="btn btn-primary">プロフィール</a>
+    <a href="#contact" class="btn btn-outline">お問い合わせ</a>
   </div>
 </section>
 
 <!-- NEWS -->
-<div class="news-bg" id="news">
-  <div class="news-inner">
-    <p class="sec-label reveal">NEWS</p>
-    <h2 class="sec-title reveal">ニュース</h2>
-    <p class="sec-sub reveal">最新の活動情報をお届けします。</p>
+<section class="section news-section" id="news">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <p class="section-label">News</p>
+      <h2 class="section-title">ニュース</h2>
+      <p class="section-desc">最新の活動情報をお届けします。</p>
+    </div>
 
-    <div class="news-list reveal">
+    <div class="news-list fade-in">
       <div class="news-item">
         <span class="news-date">2026.05.01</span>
-        <div>
-          <span class="news-tag">お知らせ</span>
-          <span class="news-title">ウェブサイトを準備中です</span>
-        </div>
+        <span class="news-tag">お知らせ</span>
+        <span class="news-title">ウェブサイトを準備中です</span>
       </div>
       <div class="news-item">
         <span class="news-date">Coming Soon</span>
-        <div>
-          <span class="news-tag">イベント</span>
-          <span class="news-title">活動情報を更新予定</span>
-        </div>
+        <span class="news-tag">イベント</span>
+        <span class="news-title">活動情報を更新予定</span>
       </div>
       <div class="news-item">
         <span class="news-date">Coming Soon</span>
-        <div>
-          <span class="news-tag">メディア</span>
-          <span class="news-title">メディア掲載情報を更新予定</span>
-        </div>
+        <span class="news-tag">メディア</span>
+        <span class="news-title">メディア掲載情報を更新予定</span>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- PROFILE -->
-<div class="profile-bg" id="profile">
-  <div class="profile-inner">
-    <p class="sec-label reveal">PROFILE</p>
-    <h2 class="sec-title reveal">プロフィール</h2>
+<section class="section profile-section" id="profile">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <p class="section-label">Profile</p>
+      <h2 class="section-title">プロフィール</h2>
+    </div>
+
     <div class="profile-grid">
-      <div class="profile-avatar reveal">
-        <div class="avatar-circle">🌿</div>
+      <div class="profile-avatar fade-in">
+        <div class="avatar-image">🌿</div>
         <p class="profile-name">ふくとんぼ</p>
-        <p class="profile-en">FUKU TONBO</p>
-        <div class="sns-row">
-          <a class="sns-btn" href="https://www.instagram.com/takahashitonnbow" target="_blank" title="Instagram">📷</a>
-          <a class="sns-btn" href="https://www.instagram.com/peer_fuku" target="_blank" title="ピアサポふくしま">🤝</a>
+        <p class="profile-name-en">FUKU TONBO</p>
+        <div class="sns-links">
+          <a class="sns-link" href="https://www.instagram.com/takahashitonnbow" target="_blank" title="Instagram">📷</a>
+          <a class="sns-link" href="https://www.instagram.com/peer_fuku" target="_blank" title="ピアサポふくしま">🤝</a>
         </div>
-        <div class="tag-list" style="justify-content:center;margin-top:14px">
+        <div class="tag-list" style="justify-content:center;margin-top:20px">
           <span class="tag">ADHD</span>
           <span class="tag">双極症</span>
-          <span class="tag amber">当事者</span>
+          <span class="tag accent">当事者</span>
           <span class="tag">ピアサポーター</span>
         </div>
       </div>
 
-      <div class="profile-content reveal">
+      <div class="profile-content fade-in">
         <p class="profile-intro">
-          福島県精神障害者ピアサポーターとして、<br>
-          発達障がい・精神障がいの当事者の立場からフリーで活動。<br><br>
-          「<strong>障がい</strong>を<strong>障害</strong>にしたくない」という想いのもと、<br>
-          就労継続支援B型事業所 <strong>minna（みんな）</strong>の運営、<br>
-          地域に根ざしたピアサポート事業、<br>
-          各種講演・イベント企画など多岐にわたって活動しています。
+          福島県精神障害者ピアサポーターとして、発達障がい・精神障がいの当事者の立場からフリーで活動しています。<br><br>
+          「<strong>障がい</strong>を<strong>障害</strong>にしたくない」という想いのもと、就労継続支援B型事業所 <strong>minna（みんな）</strong>の運営、地域に根ざしたピアサポート事業、各種講演・イベント企画など多岐にわたって活動しています。
         </p>
-        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:20px;padding:16px;background:var(--sky);border-radius:12px;">
+
+        <div class="placeholder-box">
           ※ 詳しいプロフィールは準備中です。<br>
           写真・経歴等は後日追加予定です。
-        </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- PROJECTS（企画・アイディア） -->
-<div class="projects-bg" id="projects">
-  <div class="projects-inner">
-    <p class="sec-label reveal">PROJECTS</p>
-    <h2 class="sec-title reveal">企画・アイディア</h2>
-    <p class="sec-sub reveal">障がいが障害にならない未来のために、様々なプロジェクトを展開しています。</p>
+<!-- PROJECTS -->
+<section class="section projects-section" id="projects">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <p class="section-label">Projects</p>
+      <h2 class="section-title">企画・アイディア</h2>
+      <p class="section-desc">障がいが障害にならない未来のために、<br>様々なプロジェクトを展開しています。</p>
+    </div>
 
-    <div class="project-grid reveal">
+    <div class="project-grid fade-in">
       <div class="project-card featured">
-        <div class="project-ico">❤️</div>
+        <div class="project-icon">❤️</div>
         <h3 class="project-title">ハートシップ福島</h3>
         <p class="project-desc">
-          福島の福祉を、みんなで支える。<br>
-          賛同企業100社を目指すCSR・社会貢献型プロジェクト。地域企業・団体が一緒になって福祉を支えます。
+          福島の福祉を、みんなで支える。賛同企業100社を目指すCSR・社会貢献型プロジェクト。
         </p>
         <span class="project-status">🌱 推進中</span>
       </div>
 
       <div class="project-card">
-        <div class="project-ico">🤖</div>
+        <div class="project-icon">🤖</div>
         <h3 class="project-title">とんぼAI</h3>
         <p class="project-desc">
-          AIを活用した障がい者支援の新しいカタチ。<br>
-          テクノロジーで「できる」を増やすプロジェクト。
+          AIを活用した障がい者支援の新しいカタチ。テクノロジーで「できる」を増やします。
         </p>
         <span class="project-status coming">📋 企画中</span>
       </div>
 
       <div class="project-card">
-        <div class="project-ico">💬</div>
+        <div class="project-icon">💬</div>
         <h3 class="project-title">LINEスタンプ</h3>
         <p class="project-desc">
-          ふくとんぼオリジナルLINEスタンプ。<br>
-          売上の一部は福祉活動に還元されます。
+          ふくとんぼオリジナルLINEスタンプ。売上の一部は福祉活動に還元されます。
         </p>
         <span class="project-status coming">📋 準備中</span>
       </div>
     </div>
 
     <!-- ハートシップ詳細 -->
-    <div class="heartship-detail reveal">
-      <span class="hs-badge">HEARTSHIP FUKUSHIMA</span>
-      <h3 class="hs-title">ハートシップふくしま</h3>
-      <p class="hs-desc">
+    <div class="heartship-card fade-in">
+      <span class="heartship-badge">HEARTSHIP FUKUSHIMA</span>
+      <h3 class="heartship-title">ハートシップふくしま</h3>
+      <p class="heartship-desc">
         障がいのある方が「自分らしく生きる」を叶えるために、<br>
-        地域企業・団体が一緒になって福祉を支えるプロジェクト。<br>
-        賛同することで、あなたの会社も福祉の力になれます。
+        地域企業・団体が一緒になって福祉を支えるプロジェクト。
       </p>
-      <div class="hs-count">
-        <span class="hs-num">100</span>
-        <div>
-          <span class="hs-unit">社</span>
-          <span class="hs-sub">賛同企業 目標（今年度中）</span>
-        </div>
+      <div class="heartship-count">
+        <span class="heartship-num">100</span>
+        <span class="heartship-unit">社</span>
       </div>
+      <p class="heartship-note">賛同企業 目標（今年度中）</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- SUPPORTERS（応援団） -->
-<div class="supporters-bg" id="supporters">
-  <div class="supporters-inner">
-    <p class="sec-label reveal">SUPPORTERS</p>
-    <h2 class="sec-title reveal">応援団</h2>
+<!-- SUPPORTERS -->
+<section class="section supporters-section" id="supporters">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <p class="section-label">Supporters</p>
+      <h2 class="section-title">応援団</h2>
+    </div>
 
-    <div class="supporters-intro reveal">
+    <div class="supporters-intro fade-in">
       <p>
         ふくとんぼの活動を応援してくださる皆様のご支援により、<br>
-        障がいが障害にならない未来を一緒に創っていきます。<br>
-        賛同企業・サポーターを募集しています。
+        障がいが障害にならない未来を一緒に創っていきます。
       </p>
     </div>
 
-    <div class="support-tiers reveal">
-      <div class="tier featured">
+    <div class="tier-grid fade-in">
+      <div class="tier-card featured">
         <span class="tier-badge">✦ OFFICIAL SUPPORTER</span>
         <p class="tier-name">オフィシャルサポーター</p>
         <p class="tier-price">月額・年会費制（有料）</p>
@@ -1012,7 +1229,7 @@ footer {
           <li>専用サポーター特典</li>
         </ul>
       </div>
-      <div class="tier">
+      <div class="tier-card">
         <span class="tier-badge">賛同企業</span>
         <p class="tier-name">賛同企業</p>
         <p class="tier-price">無料で参加可能</p>
@@ -1025,11 +1242,10 @@ footer {
       </div>
     </div>
 
-    <!-- 賛同企業バナーエリア -->
-    <div class="banner-area reveal">
+    <div class="banner-area fade-in">
       <p class="banner-title">── 賛同企業・サポーター企業 ──</p>
       <div class="banner-grid">
-        <div class="banner-slot filled">募集中 🌿</div>
+        <div class="banner-slot active">募集中 🌿</div>
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">企業バナー</div>
         <div class="banner-slot">企業バナー</div>
@@ -1040,27 +1256,27 @@ footer {
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- WORDS -->
-<div class="words-bg">
-  <div class="words-inner">
-    <p class="big-quote">
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner">
+    <p class="quote-text">
       <em>"みんな"</em> を大切に、<em>"自分"</em> はもっと大切に。<br>
       障がいとともに生きる仲間を笑顔に、<br>
       支える人も笑顔に、<br>
       そして自分が一番の<em>笑顔</em>で。
     </p>
-    <p class="words-name">── ふくとんぼ / FUKU TONBO</p>
+    <p class="quote-author">── ふくとんぼ / FUKU TONBO</p>
   </div>
-</div>
+</section>
 
 <!-- CONTACT -->
-<div class="contact-bg" id="contact">
-  <div class="contact-inner">
-    <div class="contact-card reveal">
-      <p class="sec-label" style="justify-content:center">CONTACT</p>
-      <h2 class="sec-title">お問い合わせ</h2>
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-card fade-in">
+      <p class="section-label" style="justify-content:center">Contact</p>
+      <h2 class="section-title">お問い合わせ</h2>
       <div class="contact-info">
         <p>
           講演依頼・取材・ハートシップふくしま賛同申込<br>
@@ -1068,31 +1284,26 @@ footer {
         </p>
       </div>
       <div class="contact-methods">
-        <a href="https://www.instagram.com/takahashitonnbow" target="_blank" class="contact-method instagram">
+        <a href="https://www.instagram.com/takahashitonnbow" target="_blank" class="contact-link instagram">
           📷 Instagram（個人）
         </a>
-        <a href="https://www.instagram.com/peer_fuku" target="_blank" class="contact-method instagram">
+        <a href="https://www.instagram.com/peer_fuku" target="_blank" class="contact-link instagram">
           🤝 ピアサポふくしま
         </a>
-        <a href="#" class="contact-method facebook">
-          📘 Facebook（準備中）
-        </a>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-top:24px;line-height:1.8">
+      <p class="contact-note">
         ※ お問い合わせフォームは準備中です。<br>
         SNSのDMよりご連絡ください。
       </p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <p class="footer-logo">🌿 ふくとんぼ</p>
-  <p style="font-size:12px;color:rgba(255,255,255,.65);letter-spacing:.08em;margin-bottom:4px">
-    障がいが障害にならない未来へ
-  </p>
-  <div class="footer-sns">
+  <p class="footer-tagline">障がいが障害にならない未来へ</p>
+  <div class="footer-links">
     <a href="https://www.instagram.com/takahashitonnbow" target="_blank">📷 Instagram</a>
     <a href="https://www.instagram.com/peer_fuku" target="_blank">🤝 ピアサポふくしま</a>
   </div>
@@ -1100,18 +1311,12 @@ footer {
 </footer>
 
 <script>
-/* スクロールリビール */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(r => observer.observe(r));
+// スクロールでヘッダーに影
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+});
 
-/* ナビ */
+// モバイルメニュー
 function toggleMenu() {
   document.getElementById('navlinks').classList.toggle('open');
 }
@@ -1121,11 +1326,16 @@ document.querySelectorAll('#navlinks a').forEach(a => {
   });
 });
 
-/* スクロールでナビシャドウ */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').style.boxShadow =
-    window.scrollY > 20 ? '0 2px 20px rgba(60,40,20,.1)' : 'none';
-});
+// スクロールアニメーション
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+fadeElements.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
